@@ -1,0 +1,24 @@
+#root, .ant-layout{
+  height: 100%;
+}
+.logo{
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 18px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 5px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(240, 240, 240); 
+}

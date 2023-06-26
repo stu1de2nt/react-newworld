@@ -1,0 +1,434 @@
+{
+  "posts": [
+    {
+      "title": "新闻修改-patch1",
+      "author": "李四",
+      "id": 1
+    },
+    {
+      "title": "新增的新闻1",
+      "author": "张三",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "评价1",
+      "postId": 1
+    }
+  ],
+  "rights": [
+    {
+      "id": 1,
+      "title": "首页",
+      "key": "/home",
+      "pagepermisson": 1,
+      "grade": 1
+    },
+    {
+      "id": 2,
+      "title": "用户管理",
+      "key": "/user-manage",
+      "pagepermisson": 1,
+      "grade": 1
+    },
+    {
+      "id": 7,
+      "title": "权限管理",
+      "key": "/right-manage",
+      "pagepermisson": 1,
+      "grade": 1
+    },
+    {
+      "id": 14,
+      "title": "新闻管理",
+      "key": "/news-manage",
+      "pagepermisson": 1,
+      "grade": 1
+    },
+    {
+      "id": 21,
+      "title": "审核管理",
+      "key": "/audit-manage",
+      "pagepermisson": 1,
+      "grade": 1
+    },
+    {
+      "id": 24,
+      "title": "发布管理",
+      "key": "/publish-manage",
+      "pagepermisson": 1,
+      "grade": 1
+    }
+  ],
+  "children": [
+    {
+      "id": 3,
+      "title": "添加用户",
+      "rightId": 2,
+      "key": "/user-manage/add",
+      "grade": 2
+    },
+    {
+      "id": 4,
+      "title": "删除用户",
+      "rightId": 2,
+      "key": "/user-manage/delete",
+      "grade": 2
+    },
+    {
+      "id": 5,
+      "title": "修改用户",
+      "rightId": 2,
+      "key": "/user-manage/update",
+      "grade": 2
+    },
+    {
+      "id": 6,
+      "title": "用户列表",
+      "rightId": 2,
+      "key": "/user-manage/list",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 8,
+      "title": "角色列表",
+      "rightId": 7,
+      "key": "/right-manage/role/list",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 9,
+      "title": "权限列表",
+      "rightId": 7,
+      "key": "/right-manage/right/list",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 15,
+      "title": "撰写新闻",
+      "rightId": 14,
+      "key": "/news-manage/news/add",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 16,
+      "title": "草稿箱",
+      "rightId": 14,
+      "key": "/news-manage/news/bin",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 17,
+      "title": "新闻分类",
+      "rightId": 14,
+      "key": "/news-manage/news/type",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 22,
+      "title": "审核新闻",
+      "rightId": 21,
+      "key": "/audit-manage/news/audit",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 23,
+      "title": "审核列表",
+      "rightId": 21,
+      "key": "/audit-manage/news/list",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 25,
+      "title": "待发布",
+      "rightId": 24,
+      "key": "/publish-manage/news/wait",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 26,
+      "title": "已发布",
+      "rightId": 24,
+      "key": "/publish-manage/news/finish",
+      "pagepermisson": 1,
+      "grade": 2
+    },
+    {
+      "id": 27,
+      "title": "已下线",
+      "rightId": 24,
+      "key": "/publish-manage/news/line",
+      "pagepermisson": 1,
+      "grade": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "roleName": "超级管理员",
+      "roleype": 1,
+      "rights": [
+        "/home",
+        "/news-manage",
+        "/news-manage/news/add",
+        "/news-manage/news/bin",
+        "/news-manage/news/type",
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list",
+        "/audit-manage",
+        "/audit-manage/news/audit",
+        "/audit-manage/news/list",
+        "/publish-manage",
+        "/publish-manage/news/wait",
+        "/publish-manage/news/finish",
+        "/publish-manage/news/line",
+        "/right-manage",
+        "/right-manage/role/list",
+        "/right-manage/right/list"
+      ]
+    },
+    {
+      "id": 2,
+      "roleName": "区域管理员",
+      "roleype": 2,
+      "rights": [
+        "/home",
+        "/news-manage",
+        "/publish-manage",
+        "/news-manage/news/add",
+        "/news-manage/news/bin",
+        "/news-manage/news/type",
+        "/audit-manage/news/list",
+        "/publish-manage/news/wait",
+        "/publish-manage/news/finish",
+        "/publish-manage/news/line",
+        "/audit-manage/news/audit",
+        "/audit-manage"
+      ]
+    },
+    {
+      "id": 3,
+      "roleName": "区域编辑",
+      "roleype": 3,
+      "rights": [
+        "/home",
+        "/news-manage/news/add",
+        "/news-manage/news/bin",
+        "/publish-manage",
+        "/publish-manage/news/wait",
+        "/publish-manage/news/finish",
+        "/publish-manage/news/line",
+        "/audit-manage/news/list",
+        "/news-manage",
+        "/audit-manage"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "铁子",
+      "password": "123456",
+      "roleState": true,
+      "default": true,
+      "region": "全球",
+      "roleId": 1
+    },
+    {
+      "id": 2,
+      "username": "铁锤",
+      "password": "123",
+      "roleState": true,
+      "default": false,
+      "region": "亚洲",
+      "roleId": 2
+    },
+    {
+      "id": 3,
+      "username": "铁蛋",
+      "password": "123",
+      "roleState": true,
+      "default": false,
+      "region": "欧洲",
+      "roleId": 2
+    },
+    {
+      "id": 4,
+      "username": "铁鞋",
+      "password": "123",
+      "roleState": true,
+      "default": false,
+      "region": "美洲",
+      "roleId": 3
+    },
+    {
+      "username": "铁锹",
+      "password": "1234",
+      "region": "南半球",
+      "roleId": 2,
+      "roleState": true,
+      "id": 5
+    }
+  ],
+  "news": [
+    {
+      "title": "测试",
+      "categoryId": 1,
+      "content": "<p>测试</p>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 3,
+      "publishState": 1,
+      "creareTime": 1615780184222,
+      "star": 0,
+      "view": 0,
+      "id": 1,
+      "publishTime": 1615778496314
+    },
+    {
+      "title": "俄乌冲突",
+      "categoryId": 4,
+      "content": "<p><strong>当前局势</strong></p>\n<ol>\n<li>俄军内乱</li>\n<li>乌军反攻</li>\n<li>白俄罗斯调和</li>\n<li>乌军反攻受阻</li>\n<li>拜登会见泽连斯基</li>\n</ol>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 0,
+      "creareTime": 1687743556097,
+      "star": 0,
+      "view": 0,
+      "id": 2
+    },
+    {
+      "title": "泰坦尼克号潜艇失联",
+      "categoryId": 1,
+      "content": "<p><strong>潜艇失联</strong></p>\n<ol>\n<li>失联超过72h</li>\n<li>目前确认死亡</li>\n<li>失联潜艇已经自爆</li>\n</ol>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "creareTime": 1687743635520,
+      "star": 0,
+      "view": 0,
+      "id": 3
+    },
+    {
+      "title": "布林肯访华",
+      "categoryId": 1,
+      "content": "<p><strong>布林肯访华</strong></p>\n<ol>\n<li>本次访华为协商访华</li>\n<li>为了缓和中美关系</li>\n<li>布林肯在台湾问题上让步</li>\n</ol>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 1,
+      "publishState": 0,
+      "creareTime": 1687743721138,
+      "star": 0,
+      "view": 0,
+      "id": 4
+    },
+    {
+      "title": "山东高考",
+      "categoryId": 6,
+      "content": "<p><strong>山东高考成绩出炉</strong></p>\n<ol>\n<li>本科线为443分</li>\n<li>23年6月25日16：30公布成绩</li>\n</ol>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "creareTime": 1687743822766,
+      "star": 0,
+      "view": 0,
+      "id": 5
+    },
+    {
+      "title": "同校同班大学生高考",
+      "categoryId": 6,
+      "content": "<p><strong>高考成绩</strong></p>\n<ul>\n<li>同校同班双胞胎参加高考</li>\n<li>都取得688分的成绩</li>\n<li>猜测大学可能填报一致</li>\n</ul>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "creareTime": 1687744170608,
+      "star": 0,
+      "view": 0,
+      "id": 6
+    },
+    {
+      "title": "老师查分发现成绩被屏蔽",
+      "categoryId": 6,
+      "content": "<p><strong>全省前30名成绩被屏蔽</strong></p>\n<ul>\n<li>一老师帮自己学生查成绩</li>\n<li>发现成绩被屏蔽</li>\n<li>查第二个也被屏蔽</li>\n<li>谁懂啊，这种知道自己考的很好，但是不知道好到什么程度的感觉</li>\n<li>麻烦这种感觉也给我来一次</li>\n</ul>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "creareTime": 1687744322763,
+      "star": 0,
+      "view": 0,
+      "id": 7
+    },
+    {
+      "title": "鸭脖事件",
+      "categoryId": 6,
+      "content": "<p><strong>鸭脖事件</strong></p>\n<ul>\n<li><span style=\"color: rgb(255,255,255);\">鸭</span><span style=\"color: rgb(255,255,255);background-color: rgb(40,50,78);\">脖吃出鼠头</span></li>\n</ul>\n",
+      "region": "全球",
+      "author": "铁子",
+      "roleId": 1,
+      "auditState": 1,
+      "publishState": 0,
+      "creareTime": 1687759353939,
+      "star": 0,
+      "view": 0,
+      "id": 8
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "时代新闻",
+      "value": "时代新闻"
+    },
+    {
+      "id": 2,
+      "title": "环球经济",
+      "value": "环球经济"
+    },
+    {
+      "id": 3,
+      "title": "科学技术",
+      "value": "科学技术"
+    },
+    {
+      "id": 4,
+      "title": "军事世界",
+      "value": "军事世界"
+    },
+    {
+      "id": 5,
+      "title": "世界体育",
+      "value": "世界体育"
+    },
+    {
+      "id": 6,
+      "title": "生活理财",
+      "value": "生活理财"
+    }
+  ]
+}

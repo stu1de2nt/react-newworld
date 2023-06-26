@@ -1,0 +1,17 @@
+.ones-btn{
+  margin-right: 10px;
+}
+.bottom-box, .steps-content{
+  margin-top: 50px;
+}
+.hidden{
+  display: none;
+}
+.number-view{
+  color: orange;
+}
+.col-content{
+  width: 100%;
+  background: #f6f6f6;
+  padding: 12px;
+}
