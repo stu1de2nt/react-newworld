@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Space, Tag, Modal, notification } from 'antd';
-import axios from 'axios';
-import NewsDrawer from '../../../components/news-manage/NewsDrawer';
 import {
   CheckCircleOutlined,
-  CloseCircleOutlined,
-  ExclamationCircleFilled
+  DeleteOutlined,
+  ExclamationCircleFilled,
+  MinusSquareOutlined
 } from '@ant-design/icons';
-
+import NewsDrawer from '../news-manage/NewsDrawer';
 const { confirm } = Modal;
 
-function NewsAudit() {
+function NewsPublish({ dataSource }) {
   // 表格列数据
   const columns = [
     {
@@ -45,11 +44,6 @@ function NewsAudit() {
       }
     },
     {
-      title: '新闻区域',
-      dataIndex: 'region',
-      key: 'region'
-    },
-    {
       title: '作者',
       dataIndex: 'author',
       key: 'author'
@@ -63,47 +57,55 @@ function NewsAudit() {
       }
     },
     {
+      title: '发布状态',
+      dataIndex: 'publishState',
+      key: 'publishState',
+      render: (text) => {
+        return <Tag color={colorListPub[text]}>{publinshList[text]}</Tag>;
+      }
+    },
+    {
       title: '操作',
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <Button
-            icon={<CheckCircleOutlined />}
-            size="small"
-            type="primary"
-            onClick={() => showConfirm(record, 2, 1)}
-          >
-            通过
-          </Button>
-          <Button
-            icon={<CloseCircleOutlined />}
-            size="small"
-            danger
-            type="primary"
-            onClick={() => showConfirm(record, 3, 0)}
-          >
-            驳回
-          </Button>
+          {record.publishState === 1 && (
+            <Button
+              size="small"
+              onClick={() => showConfirm(record)}
+              type="primary"
+              icon={<CheckCircleOutlined />}
+            >
+              发布
+            </Button>
+          )}
+          {record.publishState === 2 && (
+            <Button size="small" type="primary" danger icon={<MinusSquareOutlined />}>
+              下线
+            </Button>
+          )}
+          {record.publishState === 3 && (
+            <Button size="small" danger type="primary" icon={<DeleteOutlined />}>
+              删除
+            </Button>
+          )}
         </Space>
       )
     }
   ];
+
   // 列表数据
-  const [dataSource, setDataSource] = useState([]);
+  const [data, setData] = useState([]);
   const [recordInfo, setrecordInfo] = useState({});
   const [open, setOpen] = useState(false);
-
   const auditList = ['待审核', '审核中', '已通过', '已驳回'];
+  const publinshList = ['未发布', '待发布', '已上线', '已下线'];
   const colorList = ['blue', 'green', 'lime', 'red'];
+  const colorListPub = ['', 'blue', 'orange', 'red'];
 
   useEffect(() => {
-    getList();
-  }, []);
-
-  const getList = async () => {
-    const res = await axios.get(`/news?auditState=1&_expand=category`);
-    setDataSource(res.data);
-  };
+    setData(dataSource);
+  }, [dataSource]);
 
   /**
    * 打开抽屉
@@ -117,47 +119,22 @@ function NewsAudit() {
     setOpen(false);
   };
 
-  /**
-   * 点击通过 / 驳回
-   * @param {*} record 表格行数据
-   * @param {*} auditState 审核状态
-   * @param {*} publishState 发布状态
-   */
-  const showConfirm = (record, auditState, publishState) => {
+  const showConfirm = (record) => {
     confirm({
-      title: `确认${auditState === 2 ? '通过' : '驳回'}吗？`,
+      title: `确认发布吗？`,
       icon: <ExclamationCircleFilled />,
-      onOk() {
-        auditMethod(record, auditState, publishState);
-      },
+      onOk() {},
       onCancel() {
         console.log('Cancel');
       }
     });
   };
-
-  /**
-   * 通过请求
-   * @param {*} record 表格行数据
-   */
-  const auditMethod = async (record, auditState, publishState) => {
-    await axios.patch(`/news/${record.id}`, {
-      auditState,
-      publishState
-    });
-    notification.info({
-      message: `操作完成`,
-      description: `您已将新闻${auditState === 2 ? '通过审核': '驳回'}`,
-      placement: 'bottomRight'
-    });
-    getList();
-  };
   return (
     <div>
-      <Table columns={columns} dataSource={dataSource} rowKey={(record) => record.id} />
+      <Table columns={columns} dataSource={data} rowKey={(record) => record.id} />
       <NewsDrawer recordInfo={recordInfo} open={open} onClose={onClose} />
     </div>
   );
 }
 
-export default NewsAudit;
+export default NewsPublish;

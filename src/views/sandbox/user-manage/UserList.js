@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Space, Switch, Modal, Form, Input, Select } from 'antd';
 import axios from 'axios';
-import { ExclamationCircleFilled } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 const { confirm } = Modal;
 
 function UserList() {
@@ -52,6 +52,7 @@ function UserList() {
             disabled={record.default}
             onClick={() => editUser(record)}
             type="primary"
+            icon={<EditOutlined />}
           >
             编辑
           </Button>
@@ -61,6 +62,7 @@ function UserList() {
             onClick={() => showConfirm(record)}
             type="primary"
             danger
+            icon={<DeleteOutlined />}
           >
             删除
           </Button>

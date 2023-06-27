@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Space, Table, Tag, Button, Modal, Switch } from 'antd';
 import axios from 'axios';
-import { ExclamationCircleFilled } from '@ant-design/icons';
+import { DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 const { confirm } = Modal;
 
 function RightList() {
@@ -47,7 +47,13 @@ function RightList() {
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <Button size="small" type="primary" onClick={() => showConfirm(record)} danger>
+          <Button
+            size="small"
+            icon={<DeleteOutlined />}
+            type="primary"
+            onClick={() => showConfirm(record)}
+            danger
+          >
             删除
           </Button>
         </Space>
@@ -126,11 +132,11 @@ function RightList() {
     if (record.grade === 1) {
       await axios.patch(`/rights/${record.id}`, {
         pagepermisson: record.pagepermisson ? 0 : 1
-      })
+      });
     } else {
       await axios.patch(`/children/${record.id}`, {
         pagepermisson: record.pagepermisson ? 0 : 1
-      })
+      });
     }
     getList();
   };

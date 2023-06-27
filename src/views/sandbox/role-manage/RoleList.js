@@ -1,7 +1,7 @@
 import { Table, Button, Space, Modal, Tree } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { ExclamationCircleFilled } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 const { confirm } = Modal;
 
 function RoleList() {
@@ -25,10 +25,21 @@ function RoleList() {
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <Button size="small" type="primary" onClick={() => showModel(record)}>
+          <Button
+            size="small"
+            icon={<EditOutlined />}
+            type="primary"
+            onClick={() => showModel(record)}
+          >
             编辑
           </Button>
-          <Button size="small" type="primary" onClick={() => showConfirm(record)} danger>
+          <Button
+            size="small"
+            icon={<DeleteOutlined />}
+            type="primary"
+            onClick={() => showConfirm(record)}
+            danger
+          >
             删除
           </Button>
         </Space>
@@ -58,7 +69,7 @@ function RoleList() {
 
   /**
    * 删除确认
-   * @param {*} record table行数据 
+   * @param {*} record table行数据
    */
   const showConfirm = (record) => {
     confirm({
@@ -75,7 +86,7 @@ function RoleList() {
 
   /**
    * 删除请求
-   * @param {*} record table行数据 
+   * @param {*} record table行数据
    */
   const deleteMethod = async (record) => {
     await axios.delete(`/roles/${record.id}`);
@@ -101,7 +112,7 @@ function RoleList() {
    */
   const handleOk = async () => {
     await axios.patch(`/roles/${id}`, {
-      rights: treeSelectData
+      rights: treeSelectData.checked || treeSelectData
     });
     handleCancel();
   };
@@ -112,7 +123,7 @@ function RoleList() {
   const handleCancel = () => {
     setIsModalOpen(false);
     setId(null);
-    setTreeSelectData([])
+    setTreeSelectData([]);
     getList();
   };
 

@@ -67,7 +67,7 @@ const NewsDrawerUpdate = ({ recordInfo, open, onClose }) => {
         <Space>
           <Button onClick={onClose}>取消</Button>
           <Button type="primary" onClick={() => handleSave(0)}>
-            确认
+            保存至草稿箱
           </Button>
           <Button type="primary" danger onClick={() => handleSave(1)}>
             提交审核

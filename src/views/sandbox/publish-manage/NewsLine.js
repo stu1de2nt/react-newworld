@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import NewsPublish from '../../../components/publish-manage/NewsPublish';
+import usePublish from '../../../components/publish-manage/usePublish';
 
 function NewsLine() {
+  // 3 - 已下线 （自定义hook）
+  const { dataSource } = usePublish(3);
   return (
-    <div>已下线</div>
-  )
+    <div>
+      <NewsPublish dataSource={dataSource} />
+    </div>
+  );
 }
-
 export default NewsLine

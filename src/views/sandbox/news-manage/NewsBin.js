@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Space, Tag, Modal, notification } from 'antd';
 import axios from 'axios';
-import { ExclamationCircleFilled } from '@ant-design/icons';
+import {
+  ExclamationCircleFilled,
+  EditOutlined,
+  DeleteOutlined,
+  UploadOutlined
+} from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './NewsAdd.css';
 import formatDate from '../../../utils/renderTime';
@@ -60,7 +65,7 @@ function NewsBin() {
       dataIndex: 'auditState',
       key: 'auditState',
       render: () => {
-        return <Tag color='blue'>待审核</Tag>;
+        return <Tag color="blue">待审核</Tag>;
       }
     },
     {
@@ -68,14 +73,29 @@ function NewsBin() {
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <Button size="small" type="primary" onClick={() => showDrawer(record, 'right')}>
+          <Button
+            size="small"
+            icon={<EditOutlined />}
+            type="primary"
+            onClick={() => showDrawer(record, 'right')}
+          >
             编辑
           </Button>
-          <Button size="small" type="primary" danger onClick={() => showConfirm(record)}>
-            删除
-          </Button>
-          <Button size="small" onClick={() => pushAudit(record)}>
+          <Button
+            size="small"
+            icon={<UploadOutlined />}
+            onClick={() => pushAudit(record)}
+          >
             提交审核
+          </Button>
+          <Button
+            icon={<DeleteOutlined />}
+            size="small"
+            type="primary"
+            danger
+            onClick={() => showConfirm(record)}
+          >
+            删除
           </Button>
         </Space>
       )
@@ -174,7 +194,7 @@ function NewsBin() {
 
   const onCloseUpdate = () => {
     setOpenUpdate(false);
-    getList()
+    getList();
   };
 
   return (
@@ -190,7 +210,11 @@ function NewsBin() {
       <div style={{ height: '20px' }}></div>
       <Table columns={columns} dataSource={dataSource} rowKey={(record) => record.id} />
       <NewsDrawer recordInfo={recordInfo} open={open} onClose={onClose} />
-      <NewsDrawerUpdate recordInfo={recordInfo} open={openUpdate} onClose={onCloseUpdate} />
+      <NewsDrawerUpdate
+        recordInfo={recordInfo}
+        open={openUpdate}
+        onClose={onCloseUpdate}
+      />
     </div>
   );
 }
