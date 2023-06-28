@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Space, Table, Tag, Button, Modal, Switch } from 'antd';
+import { Space, Table, Tag, Button, Modal, Switch, message, notification } from 'antd';
 import axios from 'axios';
 import { DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 const { confirm } = Modal;
@@ -116,12 +116,22 @@ function RightList() {
    * @param {*} record table行数据
    */
   const deleteMethod = async (record) => {
-    if (record.grade === 1) {
-      await axios.delete(`/rights/${record.id}`);
-    } else {
-      await axios.delete(`/children/${record.id}`);
-    }
-    getList();
+    message.error('抱歉当前数据为系统配置，无法删除');
+    notification.error({
+      message: `操作失败`,
+      description: `抱歉您当前操作的数据只允许修改，无法对其删除，如果需要删除请联系开发人员协调处理。`,
+      placement: 'bottomRight'
+    });
+
+    // 开发人员操作-打开后可删除
+    /*
+      if (record.grade === 1) {
+        await axios.delete(`/rights/${record.id}`);
+      } else {
+        await axios.delete(`/children/${record.id}`);
+      }
+      getList();
+    */
   };
 
   /**

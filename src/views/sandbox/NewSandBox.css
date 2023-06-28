@@ -22,3 +22,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(240, 240, 240); 
 }
+
+.trademark{
+  position: relative;
+  bottom: 5px;
+  color: #e7c0c0;
+  text-align: center;
+}

@@ -35,8 +35,11 @@ export default function NewsSandBox() {
         >
           <NewsRouter />
         </Content>
+        <div className="trademark">
+          © 2023 Render Retail WebCode <a href="https://github.com/a2645386952" target='_blank' rel="noreferrer">HeMu</a>
+          &nbsp;Terms & Conditions Privacy Policy
+        </div>
       </Layout>
     </Layout>
   );
 }
-

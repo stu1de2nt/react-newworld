@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Space, Tag, Modal, notification } from 'antd';
-import {
-  CheckCircleOutlined,
-  DeleteOutlined,
-  ExclamationCircleFilled,
-  MinusSquareOutlined
-} from '@ant-design/icons';
-import NewsDrawer from '../news-manage/NewsDrawer';
-const { confirm } = Modal;
+import { Table, Space, Tag } from 'antd';
 
-function NewsPublish({ dataSource }) {
+import NewsDrawer from '../news-manage/NewsDrawer';
+
+function NewsPublish({ dataSource, button }) {
   // 表格列数据
   const columns = [
     {
@@ -17,7 +11,7 @@ function NewsPublish({ dataSource }) {
       dataIndex: 'id',
       key: 'id',
       render: (text) => {
-        return <b>{text}</b>;
+        return <b>{text}</b>
       }
     },
     {
@@ -67,33 +61,10 @@ function NewsPublish({ dataSource }) {
     {
       title: '操作',
       key: 'action',
-      render: (_, record) => (
-        <Space size="middle">
-          {record.publishState === 1 && (
-            <Button
-              size="small"
-              onClick={() => showConfirm(record)}
-              type="primary"
-              icon={<CheckCircleOutlined />}
-            >
-              发布
-            </Button>
-          )}
-          {record.publishState === 2 && (
-            <Button size="small" type="primary" danger icon={<MinusSquareOutlined />}>
-              下线
-            </Button>
-          )}
-          {record.publishState === 3 && (
-            <Button size="small" danger type="primary" icon={<DeleteOutlined />}>
-              删除
-            </Button>
-          )}
-        </Space>
-      )
+      render: (_, record) => <Space size="middle">{button(record.id)}</Space>
     }
   ];
-
+  
   // 列表数据
   const [data, setData] = useState([]);
   const [recordInfo, setrecordInfo] = useState({});
@@ -117,17 +88,6 @@ function NewsPublish({ dataSource }) {
   };
   const onClose = () => {
     setOpen(false);
-  };
-
-  const showConfirm = (record) => {
-    confirm({
-      title: `确认发布吗？`,
-      icon: <ExclamationCircleFilled />,
-      onOk() {},
-      onCancel() {
-        console.log('Cancel');
-      }
-    });
   };
   return (
     <div>

@@ -201,7 +201,7 @@ function AuditList() {
   const publishConfirm = (record) => {
     confirm({
       title: '确认发布吗？',
-      content: '发布后您可以在发布管理中查看。',
+      content: '发布后您可以在[发布管理/已发布]中查看。',
       icon: <ExclamationCircleFilled />,
       onOk() {
         publishMethod(record);
@@ -223,7 +223,7 @@ function AuditList() {
     });
     notification.info({
       message: `操作完成`,
-      description: `新闻发布成功，可以在发布管理中查看。`,
+      description: `新闻发布成功，可以在[发布管理/已发布]中查看。`,
       placement: 'bottomRight'
     });
     navigate('/publish-manage/news/finish');

@@ -15,7 +15,6 @@ function NewsType() {
         return <b>{text}</b>;
       }
     },
-
     {
       title: '栏目名称',
       dataIndex: 'title',
@@ -46,7 +45,8 @@ function NewsType() {
       )
     }
   ];
-  
+
+  // 输入框保存时
   const handleSave = async (record) => {
     await axios.patch(`/categories/${record.id}`, {
       title: record.title,
@@ -54,6 +54,7 @@ function NewsType() {
     });
     getList();
   };
+
   // 列表数据
   const [dataSource, setDataSource] = useState([]);
 
@@ -61,6 +62,7 @@ function NewsType() {
     getList();
   }, []);
 
+  // 请求列表
   const getList = async () => {
     const res = await axios.get('/categories');
     setDataSource(res.data);
@@ -75,18 +77,34 @@ function NewsType() {
       title: '确认删除吗？',
       icon: <ExclamationCircleFilled />,
       onOk() {
-        message.error('抱歉当前数据为系统配置，无法删除');
-        notification.error({
-          message: `操作失败`,
-          description: `抱歉您当前操作的数据只允许修改，无法对其删除，如果需要删除请联系开发人员协调处理。`,
-          placement: 'bottomRight'
-        });
+        deleteMethod(record);
       },
       onCancel() {
         console.log('Cancel');
       }
     });
   };
+
+  /**
+   * 删除请求
+   * @param {*} record table行数据
+   */
+  const deleteMethod = async (record) => {
+    message.error('抱歉当前数据为系统配置，无法删除');
+    notification.error({
+      message: `操作失败`,
+      description: `抱歉您当前操作的数据只允许修改，无法对其删除，如果需要删除请联系开发人员协调处理。`,
+      placement: 'bottomRight'
+    });
+
+    // 开发人员操作-打开后可删除
+    /*
+      await axios.delete(`/categories/${record.id}`);
+      getList();
+    */
+  };
+
+  // 可编辑行
   const EditableRow = ({ index, ...props }) => {
     const [form] = Form.useForm();
     return (
@@ -98,6 +116,7 @@ function NewsType() {
     );
   };
 
+  // 可编辑列
   const EditableCell = ({
     title,
     editable,
