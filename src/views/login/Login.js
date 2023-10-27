@@ -59,17 +59,7 @@ export default function Index() {
           }}
         >
           <div style={{ fontSize: '30px', fontWeight: 600 }}>
-            <img
-              src="/母鸡.svg"
-              style={{ width: '40px', height: '40px', marginRight: '10px' }}
-              alt="鸡"
-            />
             用户登录
-            <img
-              src="/篮球.svg"
-              style={{ width: '40px', height: '40px', marginLeft: '10px' }}
-              alt="篮球"
-            />
           </div>
         </Form.Item>
         <Form.Item
