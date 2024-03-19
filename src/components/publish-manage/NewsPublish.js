@@ -15,7 +15,7 @@ function NewsPublish({ dataSource, button }) {
       }
     },
     {
-      title: '新闻名称',
+      title: '帖子名称',
       dataIndex: 'title',
       key: 'title',
       render: (text, record) => {
@@ -30,7 +30,7 @@ function NewsPublish({ dataSource, button }) {
       }
     },
     {
-      title: '新闻分类',
+      title: '帖子分类',
       dataIndex: 'category',
       key: 'category',
       render: (_, record) => {

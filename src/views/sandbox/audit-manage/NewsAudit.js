@@ -22,7 +22,7 @@ function NewsAudit() {
       }
     },
     {
-      title: '新闻名称',
+      title: '帖子名称',
       dataIndex: 'title',
       key: 'title',
       render: (text, record) => {
@@ -37,7 +37,7 @@ function NewsAudit() {
       }
     },
     {
-      title: '新闻分类',
+      title: '帖子分类',
       dataIndex: 'category',
       key: 'category',
       render: (_, record) => {
@@ -45,7 +45,7 @@ function NewsAudit() {
       }
     },
     {
-      title: '新闻区域',
+      title: '帖子区域',
       dataIndex: 'region',
       key: 'region'
     },
@@ -147,7 +147,7 @@ function NewsAudit() {
     });
     notification.info({
       message: `操作完成`,
-      description: `您已将新闻${auditState === 2 ? '通过审核': '驳回'}`,
+      description: `您已将帖子${auditState === 2 ? '通过审核': '驳回'}`,
       placement: 'bottomRight'
     });
     getList();

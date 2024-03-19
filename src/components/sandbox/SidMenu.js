@@ -53,7 +53,7 @@ function SidMenu() {
           flexDirection: 'column'
         }}
       >
-        <div className="logo">全球新闻发布系统</div>
+        <div className="logo">全球技术论坛</div>
         <Menu
           onClick={changeRouter}
           style={{ flex: 1, overflow: 'auto' }}

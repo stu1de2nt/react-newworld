@@ -45,7 +45,7 @@ function NewsAdd() {
   }, []);
 
   /**
-   * 获取新闻分类数据
+   * 获取帖子分类数据
    */
   const getOptions = async () => {
     const res = await axios.get('/categories');
@@ -73,7 +73,7 @@ function NewsAdd() {
     navigate(action === 0 ? '/news-manage/news/bin' : '/audit-manage/news/list');
     notification.info({
       message: `操作完成`,
-      description: `您可以到${action === 0 ? '草稿箱' : '审核列表'}中查看您的新闻`,
+      description: `您可以到${action === 0 ? '草稿箱' : '审核列表'}中查看您的帖子`,
       placement: 'bottomRight'
     });
   };
@@ -81,21 +81,21 @@ function NewsAdd() {
   return (
     <div>
       <Typography>
-        <Title>撰写新闻</Title>
+        <Title>撰写帖子</Title>
       </Typography>
       <Steps
         current={current}
         items={[
           {
             title: '基本信息',
-            description: '新闻标题，新闻分类'
+            description: '帖子标题，帖子分类'
           },
           {
-            title: '新闻内容',
-            description: '新闻主体内容'
+            title: '帖子内容',
+            description: '帖子主体内容'
           },
           {
-            title: '新闻提交',
+            title: '帖子提交',
             description: '保存草稿或者提交审核'
           }
         ]}
@@ -104,16 +104,16 @@ function NewsAdd() {
         <div className={current === 0 ? '' : 'hidden'}>
           <Form form={form} labelCol={{ span: 4 }} wrapperCol={{ span: 16 }}>
             <Form.Item
-              label="新闻标题"
+              label="帖子标题"
               name="title"
-              rules={[{ required: true, message: '请输入新闻标题' }]}
+              rules={[{ required: true, message: '请输入帖子标题' }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              label="新闻分类"
+              label="帖子分类"
               name="categoryId"
-              rules={[{ required: true, message: '请选择新闻分类' }]}
+              rules={[{ required: true, message: '请选择帖子分类' }]}
             >
               <Select
                 options={(optionsList || []).map((d) => ({

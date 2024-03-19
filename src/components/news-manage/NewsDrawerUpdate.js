@@ -41,14 +41,14 @@ const NewsDrawerUpdate = ({ recordInfo, open, onClose }) => {
     });
     notification.info({
       message: `操作完成`,
-      description: `您可以到${action === 0 ? '草稿箱' : '审核列表'}中查看您的新闻`,
+      description: `您可以到${action === 0 ? '草稿箱' : '审核列表'}中查看您的帖子`,
       placement: 'bottomRight'
     });
     onClose()
   };
 
   /**
-   * 获取新闻分类数据
+   * 获取帖子分类数据
    */
   const getOptions = async () => {
     const res = await axios.get('/categories');
@@ -57,7 +57,7 @@ const NewsDrawerUpdate = ({ recordInfo, open, onClose }) => {
 
   return (
     <Drawer
-      title="更新新闻"
+      title="更新帖子"
       placement="right"
       onClose={onClose}
       open={open}
@@ -77,16 +77,16 @@ const NewsDrawerUpdate = ({ recordInfo, open, onClose }) => {
     >
       <Form form={form} labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
         <Form.Item
-          label="新闻标题"
+          label="帖子标题"
           name="title"
-          rules={[{ required: true, message: '请输入新闻标题' }]}
+          rules={[{ required: true, message: '请输入帖子标题' }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="新闻分类"
+          label="帖子分类"
           name="categoryId"
-          rules={[{ required: true, message: '请选择新闻分类' }]}
+          rules={[{ required: true, message: '请选择帖子分类' }]}
         >
           <Select
             options={(optionsList || []).map((d) => ({

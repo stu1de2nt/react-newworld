@@ -14,12 +14,12 @@ const NewsDrawer = ({ recordInfo, open, onClose }) => {
   const colorListPub = ['', 'blue', 'orange', 'red'];
 
   return (
-    <Drawer title="查看新闻" placement="left" onClose={onClose} open={open} size="large">
+    <Drawer title="查看帖子" placement="left" onClose={onClose} open={open} size="large">
       <b style={{ fontSize: '18px' }}>{recordInfo.title}</b>
       <div style={{ height: '10px' }}></div>
       <Row gutter={[16, 16]}>
-        <Col span={8}>新闻作者：{recordInfo.author}</Col>
-        <Col span={8}>新闻分类：{recordInfo.category?.title}</Col>
+        <Col span={8}>帖子作者：{recordInfo.author}</Col>
+        <Col span={8}>帖子分类：{recordInfo.category?.title}</Col>
         <Col span={8}></Col>
         <Col span={8}>创建时间：{formatDate(recordInfo.creareTime)}</Col>
         <Col span={8}>
@@ -50,7 +50,7 @@ const NewsDrawer = ({ recordInfo, open, onClose }) => {
         </Col>
       </Row>
       <div style={{ height: '30px' }}></div>
-      <b style={{ fontSize: '18px' }}>新闻内容</b>
+      <b style={{ fontSize: '18px' }}>帖子内容</b>
       <div style={{ height: '10px' }}></div>
       <Row gutter={[16, 16]}>
         <Col span={24} className="col-content">

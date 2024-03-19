@@ -65,7 +65,7 @@ function usePublish(publishState) {
         }
         notification.info({
           message: `操作完成`,
-          description: `您已将新闻${contentText[type]}${
+          description: `您已将帖子${contentText[type]}${
             type === 0
               ? '可以在[发布管理/已发布]中查看'
               : type === 1

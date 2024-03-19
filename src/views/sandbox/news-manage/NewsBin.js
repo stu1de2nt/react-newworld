@@ -25,7 +25,7 @@ function NewsBin() {
       }
     },
     {
-      title: '新闻名称',
+      title: '帖子名称',
       dataIndex: 'title',
       key: 'title',
       render: (text, record) => {
@@ -40,7 +40,7 @@ function NewsBin() {
       }
     },
     {
-      title: '新闻分类',
+      title: '帖子分类',
       dataIndex: 'category',
       key: 'category',
       render: (_, record) => {
@@ -205,7 +205,7 @@ function NewsBin() {
           navigate('/news-manage/news/add');
         }}
       >
-        撰写新闻
+        撰写帖子
       </Button>
       <div style={{ height: '20px' }}></div>
       <Table columns={columns} dataSource={dataSource} rowKey={(record) => record.id} />

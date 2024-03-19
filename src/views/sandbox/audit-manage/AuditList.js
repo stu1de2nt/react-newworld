@@ -25,7 +25,7 @@ function AuditList() {
       }
     },
     {
-      title: '新闻名称',
+      title: '帖子名称',
       dataIndex: 'title',
       key: 'title',
       render: (text, record) => {
@@ -40,7 +40,7 @@ function AuditList() {
       }
     },
     {
-      title: '新闻分类',
+      title: '帖子分类',
       dataIndex: 'category',
       key: 'category',
       render: (_, record) => {
@@ -223,7 +223,7 @@ function AuditList() {
     });
     notification.info({
       message: `操作完成`,
-      description: `新闻发布成功，可以在[发布管理/已发布]中查看。`,
+      description: `帖子发布成功，可以在[发布管理/已发布]中查看。`,
       placement: 'bottomRight'
     });
     navigate('/publish-manage/news/finish');
